@@ -5,15 +5,12 @@
 [[ -d /usr/share/oh-my-zsh ]] && export ZSH=/usr/share/oh-my-zsh
 [[ -d $HOME/.oh-my-zsh ]] && export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Set name of the theme to load --- if set to "random", it will  load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME .See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="ys"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
+# Set list of themes to pick from when loading at random . Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
@@ -80,11 +77,11 @@ plugins=(git autojump)
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='mvim'
+ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -289,13 +286,11 @@ function install_fortune_gushici() {
   cd fortune-zh-data
   sudo cp * /usr/share/fortunes/
 }
-if [[ $(which fortune 2>/dev/null) ]]; then
-  fortune -e tang300 song100 #先秦 两汉 魏晋 南北朝 隋代 唐代 五代 宋代 #金朝 元代 明代 清代
+fortune -e tang300 song100 2>/dev/null#先秦 两汉 魏晋 南北朝 隋代 唐代 五代 宋代 #金朝 元代 明代 清代
 #if [[ ! -e /usr/share/fortunes/先秦.dat ]]
 #then
 #echo "可使用命令"install_fortune_gushici"下载古诗词数据"
 #fi
-fi
 
 #-----dev-----
 # rust chinese mirror
@@ -309,4 +304,3 @@ alias npmtaobao=' --registry=https://registry.npm.taobao.org'
 #path
 export PATH=$HOME/.local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
-
