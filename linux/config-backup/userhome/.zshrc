@@ -144,8 +144,9 @@ function restoreconfigs() {
 #trim for ssd
 alias trim='sudo fstrim -v /home && sudo fstrim -v /'
 
-#mount win
-alias win='sudo ntfs-3g /dev/nvme0n1p4 /mnt/windata;sudo ntfs-3g /dev/nvme0n1p4 /mnt/winos'
+#reboot and enter UEFI setup (BIOS)
+alias rebootsetup='sudo systemctl reboot --firmware-setup'
+
 
 #---power---
 alias hs='hybrid-sleep'
@@ -254,6 +255,9 @@ alias convmvgbk='convmv -f GBK -T UTF-8 --notest --nosmart'
 #teamviwer
 alias tvstart='sudo systemctl start teamviewerd.service'
 
+#sunlogin (Xorg)
+alias sunloginstart='sudo systemctl start runsunloginclient &&  xhost +'
+
 #docker
 alias dockerstart='sudo systemctl start docker && docker ps -a'
 
@@ -286,7 +290,7 @@ function install_fortune_gushici() {
   cd fortune-zh-data
   sudo cp * /usr/share/fortunes/
 }
-fortune -e tang300 song100 2>/dev/null#先秦 两汉 魏晋 南北朝 隋代 唐代 五代 宋代 #金朝 元代 明代 清代
+fortune -e tang300 song100 2>/dev/null #先秦 两汉 魏晋 南北朝 隋代 唐代 五代 宋代 #金朝 元代 明代 清代
 #if [[ ! -e /usr/share/fortunes/先秦.dat ]]
 #then
 #echo "可使用命令"install_fortune_gushici"下载古诗词数据"
@@ -304,3 +308,5 @@ alias npmtaobao=' --registry=https://registry.npm.taobao.org'
 #path
 export PATH=$HOME/.local/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/.local/lib/:$LD_LIBRARY_PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
